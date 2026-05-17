@@ -27,7 +27,7 @@ export default function SplashOverlay({ onClose }: Props) {
           GrowthLens
         </h1>
         <p className="font-body-md text-body-md text-on-surface-variant">
-          숫자를 읽어주는 앱
+          성장을 읽어주는 앱
         </p>
       </div>
 
