@@ -14,7 +14,7 @@ export default async function AnalysisPage() {
         rightIcon="share"
         rightAriaLabel="공유"
       />
-      <AnalysisClient decomp={decomp} unit={goal.unit} />
+      <AnalysisClient decomp={decomp} unit={goal.unit} target={goal.target} />
     </>
   );
 }

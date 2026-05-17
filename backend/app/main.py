@@ -2,7 +2,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.routers import analysis, records
+from app.routers import analysis, habits, records
 
 
 def _cors_origins() -> list[str]:
@@ -20,11 +20,12 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=_cors_origins(),
     allow_credentials=True,
-    allow_methods=["GET", "POST"],
+    allow_methods=["GET", "POST", "DELETE"],
     allow_headers=["*"],
 )
 
 app.include_router(records.router)
+app.include_router(habits.router)
 app.include_router(analysis.router)
 
 

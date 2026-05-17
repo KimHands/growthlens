@@ -2,6 +2,12 @@ import MainHeader from "@/components/layout/MainHeader";
 import BottomNav from "@/components/layout/BottomNav";
 import BarTrendChart from "@/components/BarTrendChart";
 import { api } from "@/lib/api";
+import {
+  describeAcceleration,
+  describeVarianceRatio,
+  describeVolatility,
+  formatTargetEta,
+} from "@/lib/stl-format";
 
 export const dynamic = "force-dynamic";
 
@@ -18,11 +24,14 @@ export default async function InsightsPage() {
   const best = decomp.points.reduce((max, d) =>
     d.observed > max.observed ? d : max,
   );
-  const avgAbsResidual =
-    decomp.points.reduce((acc, d) => acc + Math.abs(d.residual), 0) /
-    decomp.points.length;
-  const weeklyGrowth =
-    ((decomp.last_trend - decomp.first_trend) / decomp.window_days) * 7;
+  const weeklyGrowth = decomp.trend_slope_per_day * 7;
+  const targetEtaLabel = formatTargetEta(
+    decomp.days_to_target,
+    decomp.target_eta_low,
+    decomp.target_eta_high,
+    decomp.last_trend,
+    goal.target,
+  );
 
   return (
     <>
@@ -93,17 +102,22 @@ export default async function InsightsPage() {
             <Stat
               icon="〰️"
               label="평균 변동량"
-              value={`±${avgAbsResidual.toFixed(0)}${goal.unit} (잔잔한 편)`}
+              value={`±${decomp.residual_std.toFixed(1)}${goal.unit} ${describeVolatility(decomp.residual_std)}`}
             />
             <Stat
               icon="📈"
               label="성장 속도"
-              value={`매주 약 ${weeklyGrowth.toFixed(1)}${goal.unit}씩 증가`}
+              value={`매주 ${weeklyGrowth >= 0 ? "+" : ""}${weeklyGrowth.toFixed(1)}${goal.unit} ${describeAcceleration(decomp.trend_acceleration)}`}
             />
             <Stat
               icon="🎯"
               label="목표까지 예상"
-              value="37일 (예상 범위 30~45일)"
+              value={targetEtaLabel}
+            />
+            <Stat
+              icon="📊"
+              label="흐름이 설명하는 비율"
+              value={`${(decomp.trend_variance_ratio * 100).toFixed(0)}% ${describeVarianceRatio(decomp.trend_variance_ratio)}`}
             />
           </div>
         </section>
@@ -152,7 +166,7 @@ function Stat({
 }) {
   return (
     <div className="flex justify-between items-center py-3 gap-3 first:pt-0 last:pb-0">
-      <span className="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md">
+      <span className="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md shrink-0">
         <span className="text-lg">{icon}</span>
         {label}
       </span>
@@ -162,3 +176,4 @@ function Stat({
     </div>
   );
 }
+

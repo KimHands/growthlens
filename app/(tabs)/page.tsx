@@ -2,12 +2,13 @@ import Link from "next/link";
 import MainHeader from "@/components/layout/MainHeader";
 import BottomNav from "@/components/layout/BottomNav";
 import MiniTrendChart from "@/components/MiniTrendChart";
+import HabitsList from "@/components/HabitsList";
 import { api } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const snap = await api.home();
+  const [snap, habits] = await Promise.all([api.home(), api.habits.list()]);
   const { goal, today_insight: today, trend_change_pct, series } = snap;
   const userName = "종건";
 
@@ -64,49 +65,8 @@ export default async function HomePage() {
           </p>
         </section>
 
-        {/* Today's Habits Checklist (static for now) */}
-        <section className="bg-surface-container-lowest rounded-card border border-outline-variant ambient-shadow p-5 flex flex-col gap-4">
-          <div className="flex justify-between items-center">
-            <h3 className="font-headline-sm text-headline-sm text-on-surface">
-              오늘의 습관
-            </h3>
-            <div className="bg-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm font-semibold text-on-secondary-container">
-              2/3 달성
-            </div>
-          </div>
-          <ul className="flex flex-col gap-3">
-            <li className="flex items-center gap-3 opacity-70">
-              <span
-                className="material-symbols-outlined text-primary-container"
-                style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                check_circle
-              </span>
-              <span className="font-body-lg text-body-lg text-outline line-through decoration-outline">
-                {goal.title}
-              </span>
-            </li>
-            <li className="flex items-center gap-3 opacity-70">
-              <span
-                className="material-symbols-outlined text-primary-container"
-                style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                check_circle
-              </span>
-              <span className="font-body-lg text-body-lg text-outline line-through decoration-outline">
-                영단어 50개
-              </span>
-            </li>
-            <li className="flex items-center gap-3">
-              <span className="material-symbols-outlined text-outline-variant">
-                radio_button_unchecked
-              </span>
-              <span className="font-body-lg text-body-lg text-on-surface">
-                운동 30분
-              </span>
-            </li>
-          </ul>
-        </section>
+        {/* Today's Habits Checklist (dynamic) */}
+        <HabitsList initial={habits} />
 
         {/* Mini Trend Chart */}
         <Link

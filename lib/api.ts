@@ -40,6 +40,16 @@ export type DecomposeResponse = {
   first_trend: number;
   last_trend: number;
   window_days: number;
+  residual_std: number;
+  seasonal_amplitude: number;
+  weekday_vs_weekend: number;
+  trend_slope_per_day: number;
+  trend_acceleration: number;
+  trend_variance_ratio: number;
+  residual_max_abs: number;
+  days_to_target: number | null;
+  target_eta_low: number | null;
+  target_eta_high: number | null;
 };
 
 export type InsightsResponse = {
@@ -54,9 +64,32 @@ export type HomeSnapshot = {
   series: DailyRecord[];
 };
 
+export type Habit = {
+  id: string;
+  name: string;
+  done_today: boolean;
+  done_this_week: number;
+};
+
 async function get<T>(path: string): Promise<T> {
   const res = await fetch(`${BASE}${path}`, { cache: "no-store" });
   if (!res.ok) throw new Error(`${path} ${res.status}`);
+  return res.json() as Promise<T>;
+}
+
+async function send<T>(
+  method: "POST" | "DELETE",
+  path: string,
+  body?: unknown,
+): Promise<T | null> {
+  const res = await fetch(`${BASE}${path}`, {
+    method,
+    headers: body ? { "Content-Type": "application/json" } : undefined,
+    body: body ? JSON.stringify(body) : undefined,
+    cache: "no-store",
+  });
+  if (!res.ok) throw new Error(`${method} ${path} ${res.status}`);
+  if (res.status === 204) return null;
   return res.json() as Promise<T>;
 }
 
@@ -65,4 +98,11 @@ export const api = {
   decompose: () => get<DecomposeResponse>("/api/decompose"),
   insights: () => get<InsightsResponse>("/api/insights"),
   records: () => get<RecordRow[]>("/api/records"),
+  habits: {
+    list: () => get<Habit[]>("/api/habits"),
+    add: (name: string) => send<Habit>("POST", "/api/habits", { name }),
+    remove: (id: string) => send<null>("DELETE", `/api/habits/${id}`),
+    toggle: (id: string, done?: boolean) =>
+      send<Habit>("POST", `/api/habits/${id}/toggle`, { done }),
+  },
 };

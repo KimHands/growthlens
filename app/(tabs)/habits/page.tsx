@@ -1,18 +1,15 @@
 import MainHeader from "@/components/layout/MainHeader";
 import BottomNav from "@/components/layout/BottomNav";
+import HabitsList from "@/components/HabitsList";
 import { api } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
 
-const habits = [
-  { name: "영단어 50개", done: true },
-  { name: "코딩 테스트 1문제", done: false },
-  { name: "운동 30분", done: false },
-];
-
 export default async function HabitsPage() {
-  const { goal } = await api.home();
-  const doneCount = habits.filter((h) => h.done).length;
+  const [{ goal }, habits] = await Promise.all([
+    api.home(),
+    api.habits.list(),
+  ]);
   const progress = Math.min(100, (goal.streak / 14) * 100);
 
   return (
@@ -52,54 +49,7 @@ export default async function HabitsPage() {
           </div>
         </section>
 
-        <section className="bg-surface-container-lowest rounded-card border border-outline-variant ambient-shadow p-[20px] flex flex-col gap-[16px]">
-          <div className="flex justify-between items-center pb-[8px]">
-            <h2 className="font-headline-sm text-headline-sm font-semibold text-on-surface">
-              오늘 할 일
-            </h2>
-            <span className="bg-[#ECFCCB] text-primary-container font-label-sm text-label-sm font-semibold px-[10px] py-[4px] rounded-full">
-              {doneCount}/{habits.length}
-            </span>
-          </div>
-
-          <ul className="flex flex-col gap-[16px]">
-            {habits.map((h) => (
-              <li
-                key={h.name}
-                className={
-                  "flex items-center gap-[12px] " + (h.done ? "opacity-70" : "")
-                }
-              >
-                {h.done ? (
-                  <span
-                    className="material-symbols-outlined text-primary-container"
-                    style={{ fontVariationSettings: "'FILL' 1" }}
-                  >
-                    check_circle
-                  </span>
-                ) : (
-                  <span className="material-symbols-outlined text-outline-variant">
-                    radio_button_unchecked
-                  </span>
-                )}
-                <span
-                  className={
-                    "font-body-lg text-body-lg " +
-                    (h.done
-                      ? "text-on-surface line-through"
-                      : "text-on-surface")
-                  }
-                >
-                  {h.name}
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          <button className="text-primary-container font-label-lg text-label-lg font-semibold text-left mt-[8px]">
-            + 새 습관 추가
-          </button>
-        </section>
+        <HabitsList initial={habits} allowAdd allowDelete />
       </main>
 
       <BottomNav activeTab="habits" />

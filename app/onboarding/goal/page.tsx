@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import OnboardingNav from "@/components/onboarding/OnboardingNav";
+import { markOnboarded } from "@/lib/onboarding";
 
 const categories = ["공부", "운동", "자기개발"] as const;
 
@@ -119,7 +120,10 @@ export default function OnboardingGoal() {
         step={4}
         totalSteps={4}
         onPrev={() => router.push("/onboarding/3")}
-        onNext={() => router.push("/")}
+        onNext={() => {
+          markOnboarded();
+          router.push("/");
+        }}
         nextLabel="시작하기"
       />
     </>
