@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="ko" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>GrowthLens - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#006c50",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#334f00",
+                        "on-surface-variant": "#3e4944",
+                        "on-background": "#0d2003",
+                        "background": "#eeffdc",
+                        "inverse-surface": "#213614",
+                        "secondary-fixed": "#92f9a1",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#121f00",
+                        "outline-variant": "#bdc9c2",
+                        "primary": "#00644a",
+                        "on-tertiary-container": "#dfffad",
+                        "surface-variant": "#d0ebba",
+                        "surface-dim": "#c8e2b2",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#76d9b3",
+                        "tertiary": "#3f6000",
+                        "surface-container-highest": "#d0ebba",
+                        "surface-container": "#dbf6c4",
+                        "on-secondary-container": "#007430",
+                        "secondary-container": "#92f9a1",
+                        "primary-container": "#007f5f",
+                        "surface": "#eeffdc",
+                        "surface-container-high": "#d6f1bf",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#527b00",
+                        "on-secondary-fixed": "#002109",
+                        "on-primary-container": "#ceffe8",
+                        "primary-fixed-dim": "#76d9b3",
+                        "surface-bright": "#eeffdc",
+                        "on-surface": "#0d2003",
+                        "primary-fixed": "#92f6ce",
+                        "on-primary-fixed-variant": "#00513c",
+                        "secondary": "#006e2d",
+                        "outline": "#6e7a73",
+                        "surface-container-low": "#e1fcca",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#def9c7",
+                        "on-secondary-fixed-variant": "#005320",
+                        "secondary-fixed-dim": "#77dc87",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#9dd83b",
+                        "tertiary-fixed": "#b7f555",
+                        "on-primary-fixed": "#002116"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "16px",
+                        "nav-height": "64px",
+                        "container-margin": "16px",
+                        "card-gap-h": "16px",
+                        "stack-sm": "8px",
+                        "stack-md": "12px",
+                        "card-gap-v": "20px",
+                        "header-height": "64px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["beVietnamPro"],
+                        "headline-md": ["beVietnamPro"],
+                        "label-lg": ["beVietnamPro"],
+                        "headline-sm": ["beVietnamPro"],
+                        "headline-lg": ["beVietnamPro"],
+                        "label-sm": ["beVietnamPro"],
+                        "body-md": ["beVietnamPro"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-lg": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                        "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'beVietnamPro', sans-serif; background-color: #ffffff; }
+        .bg-growth-gradient { background: linear-gradient(135deg, #80B918 0%, #007F5F 100%); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style data-stitch-cursor=""></style><style data-stitch-scroll-lock=""></style></head>
+<body class="bg-surface-container-lowest text-on-surface pb-[80px]">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest flex justify-between items-center h-header-height px-container-margin w-full sticky top-0 z-50"><div class="flex items-center gap-2">
+<img alt="GrowthLens Logo" class="w-8 h-8" src="https://lh3.googleusercontent.com/aida/ADBb0uhnPv7qw2U8z7z5ixuy9iBI0evBEmtNUNv1-pvFDrcfq38ViJLMt3-wAXTeOVC5dxFKGsgWtXkIhw3WvH1vY5FvXN_0xDlUmpHcFA7tpy1qAx-uqCMxaQrIxaDXO86imNnW2Tbu-olO7re7A9zy2cw841HTZ3VM78gMtTrfDFEu36CfE0YhXuqx5oT8a_lgWDYCZ7k2b3KauuOhRwx24WyamIwTOJpGspFchDxnwvJjkZbftDpUIZD8Gg">
+<span class="font-headline-md text-headline-md font-bold text-primary">GrowthLens</span>
+</div>
+<div class="flex items-center gap-stack-md text-on-surface">
+<button class="p-2 rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+</div></header>
+<!-- Main Content -->
+<main class="px-5"><div class="font-headline-lg text-headline-lg font-bold text-on-surface py-4">종건님 👋</div>
+<!-- Hero Insight Card -->
+<section class="bg-growth-gradient rounded-[16px] p-5 text-on-primary mb-[16px] shadow-[0_4px_14px_rgba(0,127,95,0.2)]">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[32px]">📈</span>
+<div class="bg-surface-container-lowest/20 px-3 py-1 rounded-full font-label-sm text-label-sm font-semibold backdrop-blur-sm border border-surface-container-lowest/10">D-37</div>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-2 leading-tight">최근 3일 하락은<br>잠깐의 흔들림이에요</h2>
+<p class="font-body-md text-body-md text-on-primary/90 mb-4">매주 약 9.8분씩 늘고 있어요</p>
+<a class="inline-flex items-center font-label-lg text-label-lg font-semibold hover:opacity-80 transition-opacity" href="#">
+                자세히 보기 <span class="material-symbols-outlined ml-1 text-[18px]">arrow_forward</span>
+</a>
+</section>
+<!-- Streak Card -->
+<section class="bg-growth-gradient rounded-[16px] p-5 text-on-primary flex items-center justify-between mb-[20px] shadow-[0_4px_14px_rgba(0,127,95,0.2)]">
+<div class="flex items-center gap-4">
+<span class="text-[40px]">🔥</span>
+<div>
+<p class="font-label-sm text-label-sm text-on-primary/80 mb-0.5">연속 달성</p>
+<div class="flex items-baseline gap-2">
+<span class="text-[40px] font-bold leading-none">7일</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-md text-body-md text-on-primary/90">이번 주도 꾸준해요!</p>
+</div>
+</section>
+<!-- Today Checklist -->
+<section class="bg-surface-container-lowest rounded-[16px] p-5 border border-[#E5E7DA] shadow-[0_2px_12px_rgba(0,0,0,0.06)] mb-[20px]">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">오늘의 습관</h3>
+<div class="bg-surface-container px-3 py-1 rounded-full font-label-sm text-label-sm text-on-secondary-container">2/3 달성</div>
+</div>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 p-2 hover:bg-surface-variant/50 rounded-lg transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-lg text-body-lg text-outline line-through decoration-outline">습관 1</span>
+</li>
+<li class="flex items-center gap-3 p-2 hover:bg-surface-variant/50 rounded-lg transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-lg text-body-lg text-outline line-through decoration-outline">습관 2</span>
+</li>
+<li class="flex items-center gap-3 p-2 hover:bg-surface-variant/50 rounded-lg transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[#E5E7DA]" style="font-variation-settings: 'FILL' 0;">radio_button_unchecked</span>
+<span class="font-body-lg text-body-lg text-on-surface">습관 3</span>
+</li>
+</ul>
+</section>
+<!-- Mini Trend Chart Placeholder -->
+<section class="bg-surface-container-lowest rounded-[16px] p-5 border border-[#E5E7DA] shadow-[0_2px_12px_rgba(0,0,0,0.06)] mb-8">
+<h3 class="font-label-lg text-label-lg text-outline mb-4">공부 시간 · 지난 14일</h3>
+<div class="relative h-32 w-full flex items-end justify-between px-2 pb-4">
+<!-- Abstract visual representation of the described chart -->
+<div class="absolute inset-0 bg-[#ECFCCB]/30 rounded-lg -z-10 mt-8 clip-path-polygon"></div>
+<svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+<path class="opacity-80" d="M0,80 Q25,90 50,60 T100,20" fill="none" stroke="#2B9348" stroke-width="2"></path>
+<path d="M0,80 Q25,90 50,60 T100,20 L100,100 L0,100 Z" fill="#ECFCCB" fill-opacity="0.4"></path>
+</svg>
+<!-- Dots -->
+<div class="w-1.5 h-1.5 rounded-full bg-outline z-10" style="margin-bottom: 20%;"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-outline z-10" style="margin-bottom: 15%;"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-outline z-10" style="margin-bottom: 30%;"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-outline z-10" style="margin-bottom: 40%;"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-outline z-10" style="margin-bottom: 45%;"></div>
+<div class="relative flex flex-col items-center z-10" style="margin-bottom: 60%;">
+    <div class="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap bg-[#3b82f6] text-white text-[10px] px-2 py-1 rounded shadow-sm after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-4 after:border-transparent after:border-t-[#3b82f6]">
+        실제 구현 시 수정 예정
+    </div>
+    <div class="w-5 h-5 border-2 border-[#3b82f6] rounded-sm flex items-center justify-center">
+        <div class="w-1.5 h-1.5 rounded-full bg-outline"></div>
+    </div>
+</div>
+<div class="w-1.5 h-1.5 rounded-full bg-outline z-10" style="margin-bottom: 25%;"></div>
+</div>
+</section>
+</main>
+<!-- FAB -->
+<button class="fixed bottom-24 right-5 w-[56px] h-[56px] bg-primary-container rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform z-40">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 0;">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full h-nav-height bg-surface-container-lowest border-t border-[#E5E7DA] flex justify-around items-center z-50">
+<a class="flex flex-col items-center justify-center w-full h-full text-primary-container font-semibold" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">홈</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-[#6B7280] hover:text-on-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">fact_check</span>
+<span class="font-label-sm text-label-sm">습관</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-[#6B7280] hover:text-on-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">insights</span>
+<span class="font-label-sm text-label-sm">인사이트</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-[#6B7280] hover:text-on-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-sm text-label-sm">프로필</span>
+</a>
+</nav>
+
+
+</body></html>

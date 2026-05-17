@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>GrowthLens - Habit Tracker</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#006c50",
+                      "on-primary": "#ffffff",
+                      "primary": "#00644a",
+                      "on-background": "#0d2003",
+                      "tertiary": "#3f6000",
+                      "surface-container": "#dbf6c4",
+                      "surface-container-highest": "#d0ebba",
+                      "inverse-surface": "#213614",
+                      "on-secondary-fixed-variant": "#005320",
+                      "surface": "#eeffdc",
+                      "error-container": "#ffdad6",
+                      "on-error": "#ffffff",
+                      "surface-container-high": "#d6f1bf",
+                      "primary-fixed": "#92f6ce",
+                      "primary-fixed-dim": "#76d9b3",
+                      "on-tertiary-fixed": "#121f00",
+                      "on-secondary-container": "#007430",
+                      "on-secondary-fixed": "#002109",
+                      "tertiary-fixed-dim": "#9dd83b",
+                      "on-surface": "#0d2003",
+                      "on-error-container": "#93000a",
+                      "outline": "#6e7a73",
+                      "secondary-fixed": "#92f9a1",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed-variant": "#00513c",
+                      "secondary-fixed-dim": "#77dc87",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "secondary": "#006e2d",
+                      "on-tertiary-container": "#dfffad",
+                      "on-tertiary-fixed-variant": "#334f00",
+                      "secondary-container": "#92f9a1",
+                      "surface-variant": "#d0ebba",
+                      "on-surface-variant": "#3e4944",
+                      "tertiary-fixed": "#b7f555",
+                      "tertiary-container": "#527b00",
+                      "surface-dim": "#c8e2b2",
+                      "outline-variant": "#bdc9c2",
+                      "on-primary-container": "#ceffe8",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#e1fcca",
+                      "inverse-primary": "#76d9b3",
+                      "surface-bright": "#eeffdc",
+                      "on-primary-fixed": "#002116",
+                      "primary-container": "#007f5f",
+                      "inverse-on-surface": "#def9c7",
+                      "background": "#eeffdc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "header-height": "64px",
+                      "container-margin": "16px",
+                      "stack-md": "12px",
+                      "card-gap-h": "16px",
+                      "card-gap-v": "20px",
+                      "stack-sm": "8px",
+                      "nav-height": "64px",
+                      "stack-lg": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "beVietnamPro"
+                      ],
+                      "body-md": [
+                              "beVietnamPro"
+                      ],
+                      "label-lg": [
+                              "beVietnamPro"
+                      ],
+                      "label-sm": [
+                              "beVietnamPro"
+                      ],
+                      "headline-md": [
+                              "beVietnamPro"
+                      ],
+                      "body-lg": [
+                              "beVietnamPro"
+                      ],
+                      "headline-sm": [
+                              "beVietnamPro"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-lg": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-sm": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; background-color: #ffffff; }
+        .gradient-growth { background: linear-gradient(135deg, #80B918, #007F5F); }
+        .ambient-shadow { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .border-custom { border: 1px solid #E5E7DA; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <style data-stitch-cursor=""></style><style data-stitch-scroll-lock=""></style></head>
+<body class="min-h-screen flex flex-col relative pb-[64px]">
+<!-- Header (TopAppBar) -->
+<header class="flex justify-between items-center h-[64px] px-[20px] w-full bg-[#ffffff] sticky top-0 z-50"><div class="flex items-center gap-[8px]">
+<img src="{{DATA:IMAGE:IMAGE_13}}" alt="Logo" class="w-[28px] h-[28px]">
+<h1 class="font-headline-lg text-headline-lg font-bold text-[#007F5F]">GrowthLens</h1>
+</div>
+<div class="flex items-center gap-[16px] text-[#1A2E0D]">
+<span class="material-symbols-outlined" style="font-size: 24px;">notifications</span>
+<span class="material-symbols-outlined" style="font-size: 24px;">settings</span>
+</div></header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-[20px] py-[20px] flex flex-col gap-[20px] overflow-y-auto">
+<!-- Page Title Block -->
+<div class="flex flex-col gap-[4px]">
+<h2 class="font-headline-lg text-headline-lg font-bold text-[#1A2E0D]">오늘의 습관</h2>
+<p class="font-body-md text-body-md text-[#4B5563]">일관된 성장을 위한 일일 목표예요</p>
+</div>
+<!-- Card 1 (Hero Streak) -->
+<div class="gradient-growth rounded-[16px] p-[20px] flex flex-col gap-[20px] text-white">
+<div class="flex justify-between items-start">
+<span class="text-[40px] leading-none">🔥</span>
+<div class="text-right flex flex-col gap-[4px]">
+<span class="font-label-lg text-label-lg text-white/80">연속 달성</span>
+<span class="font-headline-lg text-[40px] leading-[48px] font-bold">7일</span>
+<span class="font-body-md text-body-md text-white/90">이번 주도 꾸준해요!</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-[6px] bg-white/30 rounded-full overflow-hidden">
+<div class="h-full bg-white/90 rounded-full" style="width: 70%;"></div>
+</div>
+</div>
+<!-- Card 2 (Habit Checklist) -->
+<div class="bg-[#ffffff] rounded-[16px] border-custom ambient-shadow p-[20px] flex flex-col gap-[16px]">
+<div class="flex justify-between items-center pb-[8px]">
+<h3 class="font-headline-sm text-headline-sm font-semibold text-[#1A2E0D]">오늘 할 일</h3>
+<span class="bg-[#ECFCCB] text-[#007F5F] font-label-sm text-label-sm px-[10px] py-[4px] rounded-full">2/3</span>
+</div>
+<ul class="flex flex-col gap-[16px]">
+<!-- Checked Item -->
+<li class="flex items-center gap-[12px] opacity-70">
+<span class="material-symbols-outlined text-[#007F5F]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-lg text-body-lg text-[#1A2E0D] line-through">영단어 50개</span>
+</li>
+<!-- Unchecked Item 1 -->
+<li class="flex items-center gap-[12px]">
+<span class="material-symbols-outlined text-[#E5E7DA]">radio_button_unchecked</span>
+<span class="font-body-lg text-body-lg text-[#1A2E0D]">코딩 테스트 1문제</span>
+</li>
+<!-- Unchecked Item 2 -->
+<li class="flex items-center gap-[12px]">
+<span class="material-symbols-outlined text-[#E5E7DA]">radio_button_unchecked</span>
+<span class="font-body-lg text-body-lg text-[#1A2E0D]">운동 30분</span>
+</li>
+</ul>
+<button class="text-[#007F5F] font-label-lg text-label-lg font-semibold text-left mt-[8px]">
+                + 새 습관 추가
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 w-full h-[64px] bg-[#ffffff] border-t border-[#E5E7DA] flex justify-around items-center z-50 md:hidden pb-safe">
+<!-- Inactive Tab -->
+<div class="flex flex-col items-center gap-[4px] text-[#6B7280]">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-[10px]">홈</span>
+</div>
+<!-- Active Tab -->
+<div class="flex flex-col items-center gap-[4px] text-[#007F5F]">
+<span class="material-symbols-outlined" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-sm text-[10px] font-semibold">습관</span>
+</div>
+<!-- Inactive Tab -->
+<div class="flex flex-col items-center gap-[4px] text-[#6B7280]">
+<span class="material-symbols-outlined" data-icon="lightbulb">lightbulb</span>
+<span class="font-label-sm text-[10px]">인사이트</span>
+</div>
+<!-- Inactive Tab -->
+<div class="flex flex-col items-center gap-[4px] text-[#6B7280]">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-[10px]">프로필</span>
+</div>
+</nav>
+
+
+</body></html>

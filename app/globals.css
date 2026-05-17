@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .custom-shadow {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+  .ambient-shadow {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+  .gradient-bg,
+  .gradient-growth,
+  .bg-growth-gradient {
+    background: linear-gradient(135deg, #80b918, #007f5f);
+  }
+  .border-custom {
+    border: 1px solid #e5e7da;
+  }
+  .bg-subtle-tint {
+    background-color: #ecfccb;
+  }
+  .bg-peach {
+    background-color: #ffe8d6;
+  }
+  .text-peach-dark {
+    color: #b45309;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .clip-path-polygon {
+    clip-path: polygon(0 100%, 0 60%, 50% 30%, 100% 0, 100% 100%);
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}

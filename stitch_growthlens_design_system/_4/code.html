@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GrowthLens - Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#d0ebba",
+                      "primary": "#00644a",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#0d2003",
+                      "secondary-fixed-dim": "#77dc87",
+                      "on-secondary-fixed": "#002109",
+                      "on-secondary-container": "#007430",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed": "#121f00",
+                      "surface-dim": "#c8e2b2",
+                      "surface-container-low": "#e1fcca",
+                      "primary-fixed-dim": "#76d9b3",
+                      "on-secondary-fixed-variant": "#005320",
+                      "on-tertiary-fixed-variant": "#334f00",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#eeffdc",
+                      "surface-tint": "#006c50",
+                      "surface-container": "#dbf6c4",
+                      "surface-bright": "#eeffdc",
+                      "tertiary-fixed": "#b7f555",
+                      "on-tertiary-container": "#dfffad",
+                      "on-primary-fixed-variant": "#00513c",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed-dim": "#9dd83b",
+                      "primary-container": "#007f5f",
+                      "surface-variant": "#d0ebba",
+                      "primary-fixed": "#92f6ce",
+                      "on-primary-fixed": "#002116",
+                      "on-surface-variant": "#3e4944",
+                      "on-background": "#0d2003",
+                      "background": "#eeffdc",
+                      "surface-container-high": "#d6f1bf",
+                      "secondary-fixed": "#92f9a1",
+                      "on-secondary": "#ffffff",
+                      "on-primary-container": "#ceffe8",
+                      "tertiary": "#3f6000",
+                      "secondary-container": "#92f9a1",
+                      "tertiary-container": "#527b00",
+                      "outline-variant": "#bdc9c2",
+                      "inverse-primary": "#76d9b3",
+                      "inverse-on-surface": "#def9c7",
+                      "outline": "#6e7a73",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "secondary": "#006e2d",
+                      "inverse-surface": "#213614"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "12px",
+                      "card-gap-h": "16px",
+                      "header-height": "64px",
+                      "card-gap-v": "20px",
+                      "stack-sm": "8px",
+                      "stack-lg": "16px",
+                      "container-margin": "16px",
+                      "nav-height": "64px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "beVietnamPro"
+                      ],
+                      "label-sm": [
+                              "beVietnamPro"
+                      ],
+                      "headline-md": [
+                              "beVietnamPro"
+                      ],
+                      "headline-lg": [
+                              "beVietnamPro"
+                      ],
+                      "label-lg": [
+                              "beVietnamPro"
+                      ],
+                      "body-md": [
+                              "beVietnamPro"
+                      ],
+                      "headline-sm": [
+                              "beVietnamPro"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-lg": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest text-on-surface font-body-lg min-h-screen flex flex-col antialiased">
+<!-- Top App Bar -->
+<header class="bg-surface-container-lowest h-header-height px-container-margin w-full flex items-center justify-between sticky top-0 z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary fill text-[28px]" data-icon="eco">eco</span>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">GrowthLens</h1>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<button class="hover:opacity-80 transition-opacity flex items-center justify-center w-10 h-10 rounded-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:opacity-80 transition-opacity flex items-center justify-center w-10 h-10 rounded-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-container-margin py-[20px] pb-[84px] max-w-2xl mx-auto w-full flex flex-col gap-card-gap-v">
+<!-- Card 1: Profile -->
+<section class="bg-surface-container-lowest border border-[#E5E7DA] rounded-[16px] p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col items-center text-center relative overflow-hidden">
+<!-- Background Graphic Element -->
+<div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#ECFCCB] to-transparent opacity-50 pointer-events-none"></div>
+<div class="relative z-10">
+<img alt="Profile Avatar" class="w-[80px] h-[80px] rounded-full object-cover border-4 border-surface-container-lowest shadow-sm mb-4 mx-auto" data-alt="A close-up portrait of a young Asian woman looking confidently at the camera. The lighting is soft and bright, creating a clean, modern aesthetic. The background is a subtle blur of a contemporary study or office space. She is dressed professionally yet comfortably. The overall mood is determined, intelligent, and focused, aligning perfectly with an AI-driven growth tracking application's visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaLFUMrLpfxnNZPd1KwUGmrSwpHMwOe6uNUXH01wKuVt8ldjiYgZUZBbjCfnJJuu61tdxP_CHKO9t_c9q0UD6FX5KjpkSg8_eaZ8W29QVxaVrbcWQpB2RyGBTd43Jng5cseOTgTAGSkcVMiY4p6CHvEFhP83CaGthHebrcj9gkKW0V8JIaZJKwbiw7zPwyCqK4d5G1dt3tZhY2HczCWJnxBVMhpFlQeomfdwS8FOYLSzjjZi8CsvVXPn1HHe-AmFfvfvM6TA8A_9k"/>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface mb-2">김지민</h2>
+<div class="inline-flex items-center gap-1 bg-[#ECFCCB] text-primary-container px-3 py-1 rounded-full font-label-lg text-label-lg mb-4">
+<span class="material-symbols-outlined text-[16px] fill" data-icon="school">school</span>
+<span>고시생 (Exam Taker)</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic max-w-sm mx-auto">
+                    "매일의 꾸준함이 모여 확실한 결과를 만듭니다. 이번 주 목표 달성률 85% 유지 중."
+                </p>
+</div>
+</section>
+<!-- Bento Grid for Stats -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-card-gap-h">
+<!-- Card 2: Real Growth Index -->
+<section class="bg-surface-container-lowest border border-[#E5E7DA] rounded-[16px] p-5 shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Real Growth Index</h3>
+<span class="material-symbols-outlined text-primary-container bg-surface p-2 rounded-full" data-icon="trending_up">trending_up</span>
+</div>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="text-[48px] font-bold text-primary leading-none">82</span>
+<span class="font-body-lg text-body-lg text-[#4B5563]">/100</span>
+</div>
+</div>
+<div>
+<div class="w-full bg-[#F3F4F6] rounded-full h-3 mb-2 overflow-hidden">
+<div class="bg-gradient-to-r from-[#80B918] to-[#007F5F] h-3 rounded-full" style="width: 82%"></div>
+</div>
+<p class="font-label-lg text-label-lg text-[#4B5563] text-right">상위 15% 진입</p>
+</div>
+</section>
+<!-- Card 3: Study Time -->
+<section class="bg-surface-container-lowest border border-[#E5E7DA] rounded-[16px] p-5 shadow-[0_2px_12px_rgba(0,0,0,0.06)] flex flex-col justify-between relative overflow-hidden group">
+<!-- Subtle background pattern or gradient hint -->
+<div class="absolute bottom-[-20%] right-[-10%] w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors duration-500"></div>
+<div>
+<div class="inline-flex items-center gap-1 bg-[#ECFCCB] text-primary-container px-3 py-1.5 rounded-lg font-label-lg text-label-lg mb-6 shadow-sm border border-[#E5E7DA]/50">
+<span class="material-symbols-outlined text-[16px]" data-icon="timer">timer</span>
+<span>총 공부 시간</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-[56px] font-bold text-on-surface leading-none tracking-tight">420</span>
+<span class="font-headline-sm text-headline-sm text-[#4B5563]">시간</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full h-nav-height bg-surface-container-lowest border-t border-[#E5E7DA] flex justify-around items-center px-2 pb-safe z-50">
+<a class="flex flex-col items-center justify-center w-16 h-full text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">홈</span>
+</a>
+<a class="flex flex-col items-center justify-center w-16 h-full text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="task_alt">task_alt</span>
+<span class="font-label-sm text-label-sm">습관</span>
+</a>
+<a class="flex flex-col items-center justify-center w-16 h-full text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="lightbulb">lightbulb</span>
+<span class="font-label-sm text-label-sm">인사이트</span>
+</a>
+<a class="flex flex-col items-center justify-center w-16 h-full text-[#007F5F]" href="#">
+<span class="material-symbols-outlined fill mb-1" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm font-bold">프로필</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,33 @@
+{
+  "name": "GrowthLens",
+  "short_name": "GrowthLens",
+  "description": "노이즈를 걷어내고 진짜 흐름을 본다. STL 시계열 분해로 일일 변동과 장기 트렌드를 분리하는 자기계발 기록 앱.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#eeffdc",
+  "theme_color": "#007F5F",
+  "lang": "ko",
+  "categories": ["productivity", "lifestyle", "health"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
