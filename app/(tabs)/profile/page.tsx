@@ -1,13 +1,15 @@
 import MainHeader from "@/components/layout/MainHeader";
 import BottomNav from "@/components/layout/BottomNav";
-import NotImplementedButton from "@/components/NotImplementedButton";
+import ProfileMenuList from "@/components/ProfileMenuList";
 import { api } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
 
 export default async function ProfilePage() {
   const { goal, series } = await api.home();
-  const avg = (series.reduce((acc, p) => acc + p.observed, 0) / series.length).toFixed(0);
+  const avg = (
+    series.reduce((acc, p) => acc + p.observed, 0) / series.length
+  ).toFixed(0);
 
   return (
     <>
@@ -34,12 +36,7 @@ export default async function ProfilePage() {
           <Stat label="평균" value={`${avg}${goal.unit}`} />
         </section>
 
-        <section className="flex flex-col">
-          <Row icon="notifications" label="알림 설정" />
-          <Row icon="palette" label="테마" />
-          <Row icon="help" label="도움말" />
-          <Row icon="logout" label="로그아웃" />
-        </section>
+        <ProfileMenuList />
       </main>
 
       <BottomNav activeTab="profile" />
@@ -57,23 +54,5 @@ function Stat({ label, value }: { label: string; value: string }) {
         {label}
       </span>
     </div>
-  );
-}
-
-function Row({ icon, label }: { icon: string; label: string }) {
-  return (
-    <NotImplementedButton className="flex items-center justify-between py-4 border-b border-outline-variant text-left hover:bg-surface-variant/30 transition-colors px-2 -mx-2 rounded-lg w-full">
-      <div className="flex items-center gap-3">
-        <span className="material-symbols-outlined text-on-surface-variant">
-          {icon}
-        </span>
-        <span className="font-body-lg text-body-lg text-on-surface">
-          {label}
-        </span>
-      </div>
-      <span className="material-symbols-outlined text-on-surface-variant">
-        chevron_right
-      </span>
-    </NotImplementedButton>
   );
 }
