@@ -54,6 +54,9 @@ def _build_today(
 ) -> Insight:
     # Case 1: 흔들렸지만 흐름은 상승
     if is_rising and last3_below_trend:
+        last3 = decomp.points[-3:]
+        last3_avg_obs = sum(p.observed for p in last3) / 3
+        last3_gap = decomp.points[-1].trend - last3_avg_obs  # 양수면 trend가 위
         return Insight(
             id="trend-rising-noise",
             title="최근 며칠은 흔들렸지만, 흐름은 분명히 상승 중이에요",
@@ -61,8 +64,8 @@ def _build_today(
                 f"노이즈를 걷어낸 트렌드는 지난 {decomp.window_days}일 동안 "
                 f"+{decomp.trend_change_pct}% 상승했고, 매주 약 "
                 f"{abs(weekly_growth):.1f}{unit}씩 늘고 있어요. "
-                f"최근 3일이 평균보다 낮아 보이는 건 평균 변동량 "
-                f"±{decomp.residual_std:.1f}{unit} 범위 안의 자연스러운 흔들림입니다."
+                f"최근 3일 관측값은 트렌드선보다 평균 {last3_gap:.1f}{unit} "
+                f"아래로 흔들렸지만 STL이 이걸 잔차로 분리해줍니다."
             ),
             tag="trend-up",
             emoji="📈",

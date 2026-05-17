@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import OnboardingNav from "@/components/onboarding/OnboardingNav";
+import { notImplemented } from "@/lib/toast";
 
 export default function OnboardingStep1() {
   const router = useRouter();
@@ -45,6 +46,7 @@ export default function OnboardingStep1() {
             </div>
             <button
               type="button"
+              onClick={notImplemented}
               className="w-full h-12 rounded-xl bg-gradient-to-r from-primary-container to-primary text-white font-label-lg text-label-lg hover:opacity-90 transition-opacity flex justify-center items-center"
             >
               기록 저장하기

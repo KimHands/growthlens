@@ -51,6 +51,21 @@
   }
 }
 
+@keyframes toast-in {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.animate-toast-in {
+  animation: toast-in 180ms ease-out;
+}
+
 .material-symbols-outlined {
   font-variation-settings:
     "FILL" 0,

@@ -126,14 +126,31 @@ def decompose(
 
 
 def seed_series(start: date, n: int = 14) -> tuple[list[date], list[float]]:
-    """데모용 14일치 시계열. 상승 트렌드 + 주중/주말 시즌 + 노이즈."""
+    """데모용 14일치 시계열 — GrowthLens 코어 시나리오:
+    "최근 3일은 떨어진 것처럼 보이지만 흐름은 분명히 상승 중."
+
+    구성:
+    - 강한 상승 트렌드 10 → 28 (+180%)
+    - 평일 +3 / 주말 -4 (눈에 띄는 주간 리듬)
+    - 평소 노이즈는 작게 (σ=2)
+    - 마지막 3일에 의도된 큰 음수 충격 → STL이 잔차로 분리
+    """
     rng = np.random.default_rng(42)
     dates = [start + timedelta(days=i) for i in range(n)]
-    trend = np.linspace(20, 30, n)
+
+    trend = np.linspace(10, 28, n)
+    # 시즌 진폭을 작게 (±1.5) — STL이 마지막 3일 충격을 잔차로 분리하도록
     seasonal = np.array(
-        [2 if d.weekday() in (0, 4) else -2 if d.weekday() == 5 else 0 for d in dates]
+        [-1.5 if d.weekday() >= 5 else 1.0 for d in dates], dtype=float
     )
-    noise = rng.normal(0, 6, n)
+    noise = rng.normal(0, 1.0, n)
+
+    # 마지막 3일 outlier (평소 σ=1의 5~8배) — STL robust가 trend에 흡수 안 시키고 잔차로 분리
+    if n >= 3:
+        noise[-3] = -5.0
+        noise[-2] = -8.0
+        noise[-1] = -4.0
+
     raw = trend + seasonal + noise
     values = [max(0, round(float(v), 1)) for v in raw]
     return dates, values

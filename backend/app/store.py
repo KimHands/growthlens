@@ -31,7 +31,7 @@ class Store:
             unit="분",
             target=30,
             started_at=start,
-            streak=11,
+            streak=8,
         )
         dates, values = seed_series(start, n=14)
         self.records = {

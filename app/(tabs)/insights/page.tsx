@@ -1,6 +1,7 @@
 import MainHeader from "@/components/layout/MainHeader";
 import BottomNav from "@/components/layout/BottomNav";
 import BarTrendChart from "@/components/BarTrendChart";
+import NotImplementedButton from "@/components/NotImplementedButton";
 import { api } from "@/lib/api";
 import {
   describeAcceleration,
@@ -140,9 +141,9 @@ export default async function InsightsPage() {
             <h3 className="font-headline-sm text-headline-sm text-peach-dark flex items-center gap-2">
               <span aria-hidden>⚠️</span> 번아웃 위험
             </h3>
-            <button className="text-peach-dark font-label-sm text-label-sm font-bold underline">
+            <NotImplementedButton className="text-peach-dark font-label-sm text-label-sm font-bold underline">
               패턴 확인하기
-            </button>
+            </NotImplementedButton>
           </div>
           <p className="font-body-md text-body-md text-peach-dark opacity-90">
             휴식이 필요해 보여요. 수면 패턴이 불규칙해지고 있습니다.

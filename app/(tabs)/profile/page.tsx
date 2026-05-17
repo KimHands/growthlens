@@ -1,5 +1,6 @@
 import MainHeader from "@/components/layout/MainHeader";
 import BottomNav from "@/components/layout/BottomNav";
+import NotImplementedButton from "@/components/NotImplementedButton";
 import { api } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
@@ -61,7 +62,7 @@ function Stat({ label, value }: { label: string; value: string }) {
 
 function Row({ icon, label }: { icon: string; label: string }) {
   return (
-    <button className="flex items-center justify-between py-4 border-b border-outline-variant text-left hover:bg-surface-variant/30 transition-colors px-2 -mx-2 rounded-lg">
+    <NotImplementedButton className="flex items-center justify-between py-4 border-b border-outline-variant text-left hover:bg-surface-variant/30 transition-colors px-2 -mx-2 rounded-lg w-full">
       <div className="flex items-center gap-3">
         <span className="material-symbols-outlined text-on-surface-variant">
           {icon}
@@ -73,6 +74,6 @@ function Row({ icon, label }: { icon: string; label: string }) {
       <span className="material-symbols-outlined text-on-surface-variant">
         chevron_right
       </span>
-    </button>
+    </NotImplementedButton>
   );
 }

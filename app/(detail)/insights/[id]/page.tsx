@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import SubHeader from "@/components/layout/SubHeader";
 import MiniTrendChart from "@/components/MiniTrendChart";
+import NotImplementedButton from "@/components/NotImplementedButton";
 import { api } from "@/lib/api";
 import {
   describeAcceleration,
@@ -144,9 +145,9 @@ export default async function InsightDetailPage({
             <h3 className="font-headline-sm text-headline-sm text-peach-dark flex items-center gap-2">
               ⚠️ 잠깐 쉬어가도 좋아요
             </h3>
-            <button className="text-peach-dark font-label-sm text-label-sm font-bold underline">
+            <NotImplementedButton className="text-peach-dark font-label-sm text-label-sm font-bold underline">
               패턴 보기
-            </button>
+            </NotImplementedButton>
           </div>
           <p className="font-body-md text-body-md text-peach-dark opacity-90">
             연속 {goal.streak}일 — 충분히 잘하고 있어요. 하루 정도는 가볍게

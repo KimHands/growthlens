@@ -3,6 +3,7 @@
 import { useState } from "react";
 import TrendChart from "@/components/TrendChart";
 import type { DecomposeResponse } from "@/lib/api";
+import { notImplemented } from "@/lib/toast";
 import {
   describeAcceleration,
   describeVarianceRatio,
@@ -111,7 +112,10 @@ export default function AnalysisClient({ decomp, unit, target }: Props) {
         <button
           aria-label="과거 흐름 겹쳐보기 토글"
           aria-pressed={overlay}
-          onClick={() => setOverlay((v) => !v)}
+          onClick={() => {
+            setOverlay((v) => !v);
+            notImplemented();
+          }}
           className={
             "w-12 h-6 rounded-full relative transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 " +
             (overlay ? "bg-primary-container" : "bg-outline-variant")

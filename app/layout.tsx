@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
+import Toast from "@/components/Toast";
 import "./globals.css";
 
 const beVietnamPro = Be_Vietnam_Pro({
@@ -59,6 +60,7 @@ export default function RootLayout({
       </head>
       <body className="bg-surface-container-lowest min-h-[100dvh] font-body-md text-on-surface antialiased">
         {children}
+        <Toast />
       </body>
     </html>
   );

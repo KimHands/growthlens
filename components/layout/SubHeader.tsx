@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { notImplemented } from "@/lib/toast";
 
 type Props = {
   title: string;
@@ -38,7 +39,7 @@ export default function SubHeader({
       {rightIcon ? (
         <button
           aria-label={rightAriaLabel ?? "액션"}
-          onClick={onRightClick}
+          onClick={onRightClick ?? notImplemented}
           className="w-10 h-10 -mr-2 flex items-center justify-center text-[#1A2E0D] hover:opacity-70 transition-opacity"
         >
           <span className="material-symbols-outlined">{rightIcon}</span>

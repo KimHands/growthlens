@@ -1,4 +1,7 @@
+"use client";
+
 import BrandMark from "./BrandMark";
+import { notImplemented } from "@/lib/toast";
 
 export default function MainHeader() {
   return (
@@ -8,6 +11,7 @@ export default function MainHeader() {
       <div className="flex items-center gap-stack-md text-on-surface">
         <button
           aria-label="알림"
+          onClick={notImplemented}
           className="p-2 rounded-full hover:bg-surface-variant transition-colors"
         >
           <span
@@ -19,6 +23,7 @@ export default function MainHeader() {
         </button>
         <button
           aria-label="설정"
+          onClick={notImplemented}
           className="p-2 rounded-full hover:bg-surface-variant transition-colors"
         >
           <span
