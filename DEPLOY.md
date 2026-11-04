@@ -37,8 +37,8 @@ gh repo create growthlens --public --source=. --push
 ### 1-3. 검증
 배포 완료 후:
 ```
-https://growthlens-api.onrender.com/health   → {"status":"ok"}
-https://growthlens-api.onrender.com/api/home → JSON
+https://<your-service>.onrender.com/health   → {"status":"ok"}
+https://<your-service>.onrender.com/api/home → JSON
 ```
 
 > ⚠️ Render Free 플랜은 15분 idle 후 잠들어요. 첫 요청은 cold-start로 ~30초 걸립니다.
@@ -56,7 +56,7 @@ https://growthlens-api.onrender.com/api/home → JSON
 
 | Key | Value |
 |---|---|
-| `NEXT_PUBLIC_API_BASE_URL` | `https://growthlens-api.onrender.com` |
+| `NEXT_PUBLIC_API_BASE_URL` | `https://<your-service>.onrender.com` |
 
 5. **Deploy**
 
