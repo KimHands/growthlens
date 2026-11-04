@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import OnboardingNav from "@/components/onboarding/OnboardingNav";
-import { notImplemented } from "@/lib/toast";
 
 export default function OnboardingStep1() {
   const router = useRouter();
@@ -32,6 +31,7 @@ export default function OnboardingStep1() {
                 className="w-full h-12 rounded-xl border border-outline-variant bg-surface-container-lowest px-4 font-body-md text-body-md text-on-surface placeholder-[#4B5563] focus:outline-none focus:border-primary-container transition-all"
                 placeholder="예: 2시간 30분"
                 type="text"
+                disabled
               />
             </div>
             <div>
@@ -42,12 +42,13 @@ export default function OnboardingStep1() {
                 className="w-full h-12 rounded-xl border border-outline-variant bg-surface-container-lowest px-4 font-body-md text-body-md text-on-surface placeholder-[#4B5563] focus:outline-none focus:border-primary-container transition-all"
                 placeholder="오늘 배운 내용을 간단히 적어보세요"
                 type="text"
+                disabled
               />
             </div>
             <button
               type="button"
-              onClick={notImplemented}
-              className="w-full h-12 rounded-xl bg-gradient-to-r from-primary-container to-primary text-white font-label-lg text-label-lg hover:opacity-90 transition-opacity flex justify-center items-center"
+              disabled
+              className="w-full h-12 rounded-xl bg-gradient-to-r from-primary-container to-primary text-white font-label-lg text-label-lg opacity-70 flex justify-center items-center"
             >
               기록 저장하기
             </button>
@@ -63,7 +64,7 @@ export default function OnboardingStep1() {
             당신의 성장을 만들어요
           </h2>
           <p className="font-body-md text-body-md text-[#4B5563] max-w-[280px] mx-auto">
-            공부 시간, 운동, 습관을 1분 안에 기록하세요. AI가 의미를 찾아드립니다.
+            위 입력란은 예시 화면이에요. 기록을 흐름과 변동으로 나눠서 보여 드려요.
           </p>
         </div>
       </main>

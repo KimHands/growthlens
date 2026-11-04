@@ -45,7 +45,7 @@ export default function OnboardingStep3() {
                 trending_up
               </span>
               <span className="font-label-sm text-label-sm text-[#007430]">
-                성장 속도 15% 증가
+                예시 화면
               </span>
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function OnboardingStep3() {
             한눈에 확인하세요
           </h2>
           <p className="font-body-md text-body-md text-[#4B5563] leading-relaxed">
-            주간 리포트와 함께 무엇이 효과 있었는지 알려드려요.
+            기록의 흐름과 변동을 차트와 문장으로 보여 드려요.
           </p>
         </div>
       </main>

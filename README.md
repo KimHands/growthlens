@@ -10,8 +10,8 @@
 
 [라이브 데모](https://growthlens-ashy.vercel.app)
 
-![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js&logoColor=white)
-![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
+![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-38B2AC?logo=tailwind-css&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Python_3.12-009688?logo=fastapi&logoColor=white)
@@ -23,7 +23,7 @@
 
 > [!NOTE]
 > **아이디어톤용 데모입니다.** 로그인과 DB 없이 서버 메모리에 데이터를 두며, 14일치 시드 데이터로 시작합니다.
-> 모든 방문자가 같은 데이터를 공유하고, 서버가 재시작되면 초기화됩니다. 화면의 수치도 시드 데이터로 계산한 값입니다.
+> 공개 데모의 API는 읽기 전용이며, 습관 변경은 새로고침 전까지 해당 브라우저에만 남습니다. 화면의 수치도 시드 데이터로 계산한 값입니다.
 > 백엔드가 Render Free 플랜이라 첫 접속이 오래 걸릴 수 있습니다.
 
 ---
@@ -61,7 +61,7 @@
   <tr>
     <td align="center" width="33%">
       <img src="docs/screenshots/01-onboarding.png" width="230" alt="온보딩" /><br/>
-      <sub><b>온보딩</b><br/>서비스 소개와 목표 설정 화면</sub>
+      <sub><b>온보딩</b><br/>서비스 소개와 데모 안내</sub>
     </td>
     <td align="center" width="33%">
       <img src="docs/screenshots/02-home.png" width="230" alt="홈" /><br/>
@@ -83,12 +83,12 @@
     </td>
     <td align="center" width="33%">
       <img src="docs/screenshots/06-profile.png" width="230" alt="프로필" /><br/>
-      <sub><b>프로필</b><br/>목표 요약과 메뉴</sub>
+      <sub><b>프로필</b><br/>목표 요약</sub>
     </td>
   </tr>
 </table>
 
-> 배포된 서비스에서 모바일 크기로 캡처했습니다. 회색으로 표시한 부분은 이름을 가린 것입니다.
+> 프로덕션 빌드를 로컬에서 실행해 모바일 크기로 캡처했습니다.
 
 ---
 
@@ -97,9 +97,9 @@
 | 기능 | 설명 |
 |------|------|
 | **STL 분해** | `statsmodels`의 `STL(period=7, robust=True)`로 기록을 트렌드 · 주간 패턴 · 잔차로 나눕니다. 최소 14일치 기록이 필요합니다. |
-| **파생 지표** | 성장 속도, 가속도, 평균 변동량, 주중·주말 진폭, 흐름 설명력(R²), 목표 도달 예상일을 계산합니다. |
-| **문장형 인사이트** | 흐름과 최근 변동을 조건으로 나눠 미리 정한 문구에 수치를 채웁니다. 앱에 "AI"로 표기되어 있지만 LLM은 사용하지 않습니다. |
-| **습관 관리** | 오늘의 습관을 체크하고 추가·삭제합니다. |
+| **파생 지표** | 성장 속도, 가속도, 평균 변동량, 주중·주말 진폭, 전체 변동 중 흐름 비중, 목표 도달 예상일을 계산합니다. |
+| **문장형 인사이트** | 흐름과 최근 변동을 조건으로 나눠 미리 정한 문구에 수치를 채웁니다. LLM은 사용하지 않습니다. |
+| **습관 관리** | 오늘의 습관을 체크하고 추가·삭제합니다. 변경은 브라우저 메모리에만 남습니다. |
 | **첫 방문 안내** | 미들웨어가 쿠키를 확인해 첫 방문자를 온보딩으로 보냅니다. |
 | **PWA** | 웹 앱 매니페스트와 `next-pwa` 서비스 워커를 포함합니다. |
 
@@ -117,7 +117,6 @@ flowchart LR
 
     Browser -->|페이지 요청| Next
     Next -->|서버 렌더링 시 조회| API
-    Browser -->|습관 체크·추가·삭제| API
     API --> Store
     API --> STL
 ```
@@ -128,8 +127,8 @@ flowchart LR
 
 | 분류 | 사용 기술 |
 |------|----------|
-| Frontend | Next.js 14 (App Router) · React 18 · TypeScript · Tailwind CSS · Zustand · Recharts · next-pwa |
-| Backend | FastAPI · Pydantic · statsmodels · NumPy |
+| Frontend | Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS · Zustand · Recharts · next-pwa |
+| Backend | FastAPI · Pydantic · statsmodels · NumPy · pytest |
 | 배포 | Vercel (프론트엔드) · Render Free (백엔드) |
 | 디자인 | `stitch_growthlens_design_system/`의 화면 시안과 디자인 규격 |
 
@@ -157,6 +156,14 @@ npm run dev
 
 브라우저에서 http://localhost:3000 을 엽니다. 백엔드의 기본 CORS 설정이 이 주소만 허용하므로 `127.0.0.1` 대신 `localhost`로 접속합니다. API 문서는 http://localhost:8000/docs 에 있습니다.
 
+백엔드 테스트는 다음과 같이 실행합니다.
+
+```bash
+cd backend
+pip install -r requirements-dev.txt
+python -m pytest
+```
+
 배포 절차는 [`DEPLOY.md`](DEPLOY.md)를 참고하세요.
 
 ---
@@ -174,6 +181,8 @@ npm run dev
 | DELETE | `/api/habits/{id}` | 습관 삭제 |
 | POST | `/api/habits/{id}/toggle` | 오늘 완료 여부 변경 |
 
+POST와 DELETE는 기본적으로 403을 반환합니다. 로컬에서 쓰기를 허용하려면 백엔드에 `DEMO_READ_ONLY=false`를 설정합니다. 프론트엔드는 이 API들을 호출하지 않습니다.
+
 ---
 
 ## 프로젝트 구조
@@ -190,6 +199,7 @@ npm run dev
 │   │   ├── services/    # STL 분해, 인사이트 생성
 │   │   ├── schemas.py   # Pydantic 스키마
 │   │   └── store.py     # 인메모리 저장소와 시드 데이터
+│   ├── tests/           # 쓰기 차단 테스트
 │   └── render.yaml      # Render Blueprint
 ├── components/          # 차트, 레이아웃, 온보딩 UI
 ├── lib/                 # API 클라이언트, 유틸
@@ -206,12 +216,11 @@ npm run dev
 
 | 상태 | 항목 |
 |------|------|
-| 동작 | STL 분해와 파생 지표, 문장형 인사이트, 습관 체크·추가·삭제, 첫 방문 온보딩 이동 |
-| API만 있음 | 기록 저장 (`POST /api/records`). 화면의 기록 입력은 아직 연결되어 있지 않습니다. |
-| 미구현 | `+` 기록 추가, 온보딩 입력값 저장, 알림·설정·공유·로그아웃 등 일부 버튼 (누르면 미구현 안내 표시) |
-| 없음 | 로그인, 사용자별 데이터 분리, 영구 저장, 자동 테스트, CI |
-
-인사이트 화면의 "쉽게 말하면" 문구는 데이터와 무관한 고정 문구입니다.
+| 동작 | STL 분해와 파생 지표, 문장형 인사이트, 브라우저 내 습관 체크·추가·삭제, 첫 방문 온보딩 이동, API 쓰기 차단 |
+| 예시로만 표시 | 온보딩의 기록 입력 화면, 시드에 고정된 연속 달성 일수 |
+| API만 있음 | 기록 저장 (`POST /api/records`). 기본 차단 상태이며 화면과 연결되어 있지 않습니다. |
+| 미구현 | 프로필의 테마·도움말 메뉴 (누르면 미구현 안내 표시) |
+| 없음 | 로그인, 사용자별 데이터 분리, 영구 저장, 프론트엔드 자동 테스트, CI |
 
 ---
 

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import TrendChart from "@/components/TrendChart";
 import type { DecomposeResponse } from "@/lib/api";
-import { notImplemented } from "@/lib/toast";
 import {
   describeAcceleration,
   describeVarianceRatio,
@@ -18,7 +17,6 @@ type Props = {
 };
 
 export default function AnalysisClient({ decomp, unit, target }: Props) {
-  const [overlay, setOverlay] = useState(false);
 
   const last3 = decomp.points.slice(-3);
   const last3Range =
@@ -89,7 +87,7 @@ export default function AnalysisClient({ decomp, unit, target }: Props) {
             value={`${decomp.seasonal_amplitude.toFixed(1)}${unit} (Δ ${decomp.weekday_vs_weekend >= 0 ? "+" : ""}${decomp.weekday_vs_weekend.toFixed(1)})`}
           />
           <Row
-            label="흐름 설명력 (R²)"
+            label="전체 변동 중 흐름 비중"
             value={`${(decomp.trend_variance_ratio * 100).toFixed(0)}% ${describeVarianceRatio(decomp.trend_variance_ratio)}`}
           />
           <Row label="목표까지 예상" value={targetEtaLabel} />
@@ -104,31 +102,6 @@ export default function AnalysisClient({ decomp, unit, target }: Props) {
           STL: period=7, robust=True.
         </p>
       </section>
-
-      <div className="flex justify-between items-center py-2 px-2">
-        <span className="font-body-md text-body-md text-on-surface font-medium">
-          과거 비슷한 흐름 겹쳐보기
-        </span>
-        <button
-          aria-label="과거 흐름 겹쳐보기 토글"
-          aria-pressed={overlay}
-          onClick={() => {
-            setOverlay((v) => !v);
-            notImplemented();
-          }}
-          className={
-            "w-12 h-6 rounded-full relative transition-colors focus:outline-none focus:ring-2 focus:ring-primary-container focus:ring-offset-2 " +
-            (overlay ? "bg-primary-container" : "bg-outline-variant")
-          }
-        >
-          <span
-            className={
-              "absolute top-1 w-4 h-4 rounded-full bg-surface-container-lowest transition-all shadow-sm " +
-              (overlay ? "left-7" : "left-1")
-            }
-          />
-        </button>
-      </div>
     </div>
   );
 }

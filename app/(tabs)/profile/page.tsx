@@ -18,11 +18,13 @@ export default async function ProfilePage() {
       <main className="flex-1 px-[20px] py-[20px] flex flex-col gap-card-gap-v">
         <div className="flex flex-col items-center gap-3 pt-4">
           <div className="w-20 h-20 rounded-full gradient-growth flex items-center justify-center text-white font-headline-lg font-bold">
-            종
+            <span className="material-symbols-outlined" aria-hidden>
+              person
+            </span>
           </div>
           <div className="text-center">
             <h2 className="font-headline-lg text-headline-lg font-bold text-on-surface">
-              종건
+              데모 사용자
             </h2>
             <p className="font-body-md text-body-md text-on-surface-variant">
               {goal.started_at} 부터 함께하고 있어요

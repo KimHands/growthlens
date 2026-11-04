@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
-import { api, type Habit } from "@/lib/api";
+import { useState } from "react";
+import type { Habit } from "@/lib/api";
+import { useDemoHabits } from "@/lib/habits-store";
 
 type Props = {
   initial: Habit[];
@@ -17,52 +17,39 @@ export default function HabitsList({
   allowAdd = false,
   allowDelete = false,
 }: Props) {
-  const router = useRouter();
-  const [habits, setHabits] = useState<Habit[]>(initial);
+  const stored = useDemoHabits((state) => state.habits);
+  const setHabits = useDemoHabits((state) => state.setHabits);
+  const habits = stored ?? initial;
   const [adding, setAdding] = useState(false);
   const [draft, setDraft] = useState("");
-  const [, startTransition] = useTransition();
 
   const doneCount = habits.filter((h) => h.done_today).length;
 
-  // Optimistic toggle — UI 먼저 바꾸고 백엔드 동기화. 실패 시 롤백.
   function onToggle(h: Habit) {
-    const prev = habits;
     setHabits(
       habits.map((x) =>
         x.id === h.id ? { ...x, done_today: !x.done_today } : x,
       ),
     );
-    api.habits
-      .toggle(h.id)
-      .then((updated) => {
-        if (updated) {
-          setHabits((cur) =>
-            cur.map((x) => (x.id === updated.id ? updated : x)),
-          );
-        }
-        startTransition(() => router.refresh());
-      })
-      .catch(() => setHabits(prev));
   }
 
   function onAdd(e: React.FormEvent) {
     e.preventDefault();
     const name = draft.trim();
     if (!name) return;
-    api.habits.add(name).then((created) => {
-      if (created) setHabits((cur) => [...cur, created]);
-      setDraft("");
-      setAdding(false);
-      startTransition(() => router.refresh());
-    });
+    const created: Habit = {
+      id: `demo-${Date.now()}`,
+      name,
+      done_today: false,
+      done_this_week: 0,
+    };
+    setHabits([...habits, created]);
+    setDraft("");
+    setAdding(false);
   }
 
   function onDelete(id: string) {
-    const prev = habits;
     setHabits(habits.filter((x) => x.id !== id));
-    api.habits.remove(id).catch(() => setHabits(prev));
-    startTransition(() => router.refresh());
   }
 
   return (
@@ -174,6 +161,10 @@ export default function HabitsList({
             + 새 습관 추가
           </button>
         ))}
+
+      <p className="font-label-sm text-label-sm text-on-surface-variant">
+        데모라서 변경 내용은 새로고침 전까지 이 브라우저에만 남아요.
+      </p>
     </section>
   );
 }

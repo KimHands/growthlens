@@ -2,7 +2,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import SubHeader from "@/components/layout/SubHeader";
 import MiniTrendChart from "@/components/MiniTrendChart";
-import NotImplementedButton from "@/components/NotImplementedButton";
 import { api } from "@/lib/api";
 import {
   describeAcceleration,
@@ -16,8 +15,9 @@ export const dynamic = "force-dynamic";
 export default async function InsightDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
   const [decomp, insightsRes, { goal }] = await Promise.all([
     api.decompose(),
     api.insights(),
@@ -25,12 +25,12 @@ export default async function InsightDetailPage({
   ]);
 
   const all = [insightsRes.today, ...insightsRes.past];
-  const insight = all.find((i) => i.id === params.id);
+  const insight = all.find((i) => i.id === id);
   if (!insight) notFound();
 
   const last7 = decomp.points.slice(-7);
   const last7Avg = last7.reduce((acc, d) => acc + d.observed, 0) / last7.length;
-  const best = decomp.points.reduce((max, d) =>
+  const best = last7.reduce((max, d) =>
     d.observed > max.observed ? d : max,
   );
   const weeklyGrowth = decomp.trend_slope_per_day * 7;
@@ -45,10 +45,8 @@ export default async function InsightDetailPage({
   return (
     <>
       <SubHeader
-        title="AI Insight"
+        title="인사이트"
         backHref="/insights"
-        rightIcon="share"
-        rightAriaLabel="공유"
       />
       <div className="px-[20px] py-4 pb-10 flex flex-col gap-card-gap-v">
         <section className="gradient-growth rounded-card p-6 text-white shadow-[0_4px_14px_rgba(0,127,95,0.2)]">
@@ -102,7 +100,7 @@ export default async function InsightDetailPage({
             />
             <Stat
               icon="🏆"
-              label="이번 주 최고 기록"
+              label="최근 7일 최고 기록"
               value={`${best.date.slice(5)} · ${best.observed}${goal.unit}`}
             />
             <Stat
@@ -122,37 +120,10 @@ export default async function InsightDetailPage({
             />
             <Stat
               icon="📊"
-              label="흐름이 설명하는 비율"
+              label="전체 변동 중 흐름 비중"
               value={`${(decomp.trend_variance_ratio * 100).toFixed(0)}% ${describeVarianceRatio(decomp.trend_variance_ratio)}`}
             />
           </div>
-        </section>
-
-        <section className="bg-subtle-tint rounded-card p-6">
-          <h3 className="font-headline-sm text-headline-sm mb-2 text-on-surface">
-            쉽게 말하면
-          </h3>
-          <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-            최근 며칠간의 수치 감소는 학습 곡선에서 자연스러운 조정기예요. 잔차는
-            평균 변동량 범위 안에 있고, 트렌드 선은 여전히 우상향을 그리고
-            있어요. STL 분해로 볼 때 실제로 줄어든 게 아니라 주중/주말 리듬에
-            따른 흔들림입니다.
-          </p>
-        </section>
-
-        <section className="bg-peach rounded-card p-6">
-          <div className="flex justify-between items-start mb-2">
-            <h3 className="font-headline-sm text-headline-sm text-peach-dark flex items-center gap-2">
-              ⚠️ 잠깐 쉬어가도 좋아요
-            </h3>
-            <NotImplementedButton className="text-peach-dark font-label-sm text-label-sm font-bold underline">
-              패턴 보기
-            </NotImplementedButton>
-          </div>
-          <p className="font-body-md text-body-md text-peach-dark opacity-90">
-            연속 {goal.streak}일 — 충분히 잘하고 있어요. 하루 정도는 가볍게
-            가도 트렌드는 무너지지 않아요.
-          </p>
         </section>
       </div>
     </>

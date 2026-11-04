@@ -11,10 +11,8 @@ type Item = {
 };
 
 const items: Item[] = [
-  { key: "notifications", icon: "notifications", label: "알림 설정" },
   { key: "theme", icon: "palette", label: "테마" },
   { key: "help", icon: "help", label: "도움말" },
-  { key: "logout", icon: "logout", label: "로그아웃" },
 ];
 
 const HELP_TRIGGER = 5;

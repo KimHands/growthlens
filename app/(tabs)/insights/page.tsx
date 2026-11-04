@@ -1,7 +1,7 @@
+import Link from "next/link";
 import MainHeader from "@/components/layout/MainHeader";
 import BottomNav from "@/components/layout/BottomNav";
 import BarTrendChart from "@/components/BarTrendChart";
-import NotImplementedButton from "@/components/NotImplementedButton";
 import { api } from "@/lib/api";
 import {
   describeAcceleration,
@@ -22,7 +22,7 @@ export default async function InsightsPage() {
   const today = insightsRes.today;
   const last7 = decomp.points.slice(-7);
   const last7Avg = last7.reduce((acc, d) => acc + d.observed, 0) / last7.length;
-  const best = decomp.points.reduce((max, d) =>
+  const best = last7.reduce((max, d) =>
     d.observed > max.observed ? d : max,
   );
   const weeklyGrowth = decomp.trend_slope_per_day * 7;
@@ -41,7 +41,7 @@ export default async function InsightsPage() {
       <main className="flex-1 px-[20px] pt-2 pb-6 flex flex-col gap-card-gap-v">
         <div className="flex flex-col gap-[4px] pt-2">
           <h1 className="font-headline-lg text-headline-lg font-bold text-on-surface">
-            AI Insights
+            인사이트
           </h1>
           <p className="font-body-md text-body-md text-on-surface-variant">
             데이터로 풀어드리는 성장 이야기
@@ -49,7 +49,7 @@ export default async function InsightsPage() {
         </div>
 
         {/* Card 1: Verdict */}
-        <a
+        <Link
           href={`/insights/${today.id}`}
           className="gradient-growth rounded-card p-6 text-white shadow-[0_4px_14px_rgba(0,127,95,0.2)]"
         >
@@ -64,7 +64,7 @@ export default async function InsightsPage() {
               </p>
             </div>
           </div>
-        </a>
+        </Link>
 
         {/* Card 2: Trend Chart */}
         <section className="bg-surface-container-lowest rounded-card border border-outline-variant ambient-shadow p-5">
@@ -93,11 +93,11 @@ export default async function InsightsPage() {
             <Stat
               icon="📅"
               label="지난 7일 평균"
-              value={`${last7Avg.toFixed(0)}${goal.unit}/일 (${decomp.trend_change_pct >= 0 ? "+" : ""}${decomp.trend_change_pct}%)`}
+              value={`${last7Avg.toFixed(0)}${goal.unit}/일`}
             />
             <Stat
               icon="🏆"
-              label="이번 주 최고 기록"
+              label="최근 7일 최고 기록"
               value={`${best.date.slice(5)} · ${best.observed}${goal.unit}`}
             />
             <Stat
@@ -117,37 +117,10 @@ export default async function InsightsPage() {
             />
             <Stat
               icon="📊"
-              label="흐름이 설명하는 비율"
+              label="전체 변동 중 흐름 비중"
               value={`${(decomp.trend_variance_ratio * 100).toFixed(0)}% ${describeVarianceRatio(decomp.trend_variance_ratio)}`}
             />
           </div>
-        </section>
-
-        {/* Card 4: Plain Explanation */}
-        <section className="bg-subtle-tint rounded-card p-6">
-          <h3 className="font-headline-sm text-headline-sm mb-2 text-on-surface">
-            쉽게 말하면
-          </h3>
-          <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-            최근 며칠간의 수치 감소는 학습 곡선에서 흔히 나타나는 자연스러운
-            조정기입니다. 장기적인 추세선은 여전히 우상향을 그리고 있으며,
-            이는 기초 실력이 탄탄하게 다져지고 있음을 의미합니다.
-          </p>
-        </section>
-
-        {/* Card 5: Burnout Warning */}
-        <section className="bg-peach rounded-card p-6">
-          <div className="flex justify-between items-start mb-2">
-            <h3 className="font-headline-sm text-headline-sm text-peach-dark flex items-center gap-2">
-              <span aria-hidden>⚠️</span> 번아웃 위험
-            </h3>
-            <NotImplementedButton className="text-peach-dark font-label-sm text-label-sm font-bold underline">
-              패턴 확인하기
-            </NotImplementedButton>
-          </div>
-          <p className="font-body-md text-body-md text-peach-dark opacity-90">
-            휴식이 필요해 보여요. 수면 패턴이 불규칙해지고 있습니다.
-          </p>
         </section>
       </main>
 
