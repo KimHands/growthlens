@@ -77,22 +77,6 @@ async function get<T>(path: string): Promise<T> {
   return res.json() as Promise<T>;
 }
 
-async function send<T>(
-  method: "POST" | "DELETE",
-  path: string,
-  body?: unknown,
-): Promise<T | null> {
-  const res = await fetch(`${BASE}${path}`, {
-    method,
-    headers: body ? { "Content-Type": "application/json" } : undefined,
-    body: body ? JSON.stringify(body) : undefined,
-    cache: "no-store",
-  });
-  if (!res.ok) throw new Error(`${method} ${path} ${res.status}`);
-  if (res.status === 204) return null;
-  return res.json() as Promise<T>;
-}
-
 export const api = {
   home: () => get<HomeSnapshot>("/api/home"),
   decompose: () => get<DecomposeResponse>("/api/decompose"),
@@ -100,9 +84,5 @@ export const api = {
   records: () => get<RecordRow[]>("/api/records"),
   habits: {
     list: () => get<Habit[]>("/api/habits"),
-    add: (name: string) => send<Habit>("POST", "/api/habits", { name }),
-    remove: (id: string) => send<null>("DELETE", `/api/habits/${id}`),
-    toggle: (id: string, done?: boolean) =>
-      send<Habit>("POST", `/api/habits/${id}/toggle`, { done }),
   },
 };

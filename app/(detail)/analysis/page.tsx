@@ -11,8 +11,6 @@ export default async function AnalysisPage() {
       <SubHeader
         title={`${goal.title} · 분석`}
         backHref="/"
-        rightIcon="share"
-        rightAriaLabel="공유"
       />
       <AnalysisClient decomp={decomp} unit={goal.unit} target={goal.target} />
     </>

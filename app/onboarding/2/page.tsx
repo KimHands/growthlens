@@ -36,7 +36,7 @@ export default function OnboardingStep2() {
         {/* Text Section */}
         <div className="flex flex-col items-start w-full gap-2 mb-12">
           <h1 className="font-headline-lg text-headline-lg text-on-surface">
-            AI가 일시적 흔들림과
+            일시적 흔들림과
           </h1>
           <h2 className="font-headline-md text-headline-md text-on-surface">
             진짜 성장을 구분해드려요

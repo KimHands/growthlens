@@ -3,7 +3,6 @@ import MainHeader from "@/components/layout/MainHeader";
 import BottomNav from "@/components/layout/BottomNav";
 import MiniTrendChart from "@/components/MiniTrendChart";
 import HabitsList from "@/components/HabitsList";
-import FabAddButton from "@/components/FabAddButton";
 import { api } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
@@ -11,7 +10,6 @@ export const dynamic = "force-dynamic";
 export default async function HomePage() {
   const [snap, habits] = await Promise.all([api.home(), api.habits.list()]);
   const { goal, today_insight: today, trend_change_pct, series } = snap;
-  const userName = "종건";
 
   return (
     <>
@@ -19,7 +17,7 @@ export default async function HomePage() {
 
       <main className="flex-1 px-[20px] pt-2 pb-6 flex flex-col gap-card-gap-v">
         <h1 className="font-headline-lg text-headline-lg font-bold text-on-surface py-2">
-          {userName}님 <span aria-hidden>👋</span>
+          오늘도 반가워요 <span aria-hidden>👋</span>
         </h1>
 
         {/* Hero Insight Card */}
@@ -80,8 +78,6 @@ export default async function HomePage() {
           <MiniTrendChart data={series} />
         </Link>
       </main>
-
-      <FabAddButton />
 
       <BottomNav activeTab="home" />
     </>
